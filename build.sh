@@ -1,3 +1,3 @@
 #!/bin/bash
-gradle clean applyPatches
+gradle applyPatches
 gradle paperclip javadoc
