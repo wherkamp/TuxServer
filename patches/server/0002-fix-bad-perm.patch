@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wyatt Jacob Herkamp <wherkamp@kingtux.me>
+Date: Sat, 20 Feb 2021 08:57:57 -0500
+Subject: [PATCH] fix bad perm
+
+
+diff --git a/src/main/java/net/minecraft/server/ItemBlock.java b/src/main/java/net/minecraft/server/ItemBlock.java
+index b8c71925a6e4c58fcefba0ab38270aaa236aabba..8c5ca9f0e6836287dfd6623ac18847c00d7ae0d6 100644
+--- a/src/main/java/net/minecraft/server/ItemBlock.java
++++ b/src/main/java/net/minecraft/server/ItemBlock.java
+@@ -202,7 +202,7 @@ public class ItemBlock extends Item {
+                 TileEntity tileentity = world.getTileEntity(blockposition);
+ 
+                 if (tileentity != null) {
+-                    if (!world.isClientSide && tileentity.isFilteredNBT() && (entityhuman == null || !(entityhuman.isCreativeAndOp() || (entityhuman.abilities.canInstantlyBuild && entityhuman.getBukkitEntity().hasPermission("minecraft.nbt.place"))))) { // Spigot - add permission
++                    if (!entityhuman.getBukkitEntity().hasPermission("minecraft.nbt.place")) { // Spigot - add permission // TuxServer fix the stupidest shit I have seen.
+                         return false;
+                     }
+ 

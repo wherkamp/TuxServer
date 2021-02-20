@@ -1,0 +1,11 @@
+{
+    "nmsImports": [],
+    "libraryImports": [
+        {
+            "group": "com.mojang",
+            "library": "authlib",
+            "prefix": "com/mojang/authlib",
+            "file": "GameProfile"
+        }
+    ]
+}
