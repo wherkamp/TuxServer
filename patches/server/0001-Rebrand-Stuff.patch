@@ -31,7 +31,7 @@ index dfe6777db04bb550ae0e761addd26b2d5abf3baf..332b89372ce9aa143a1289f735c71bbd
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
-index 13b98439320ac1401a920c01d7cf5a4b3a23deff..24ce7bae5b2afd3e0c8af78417767d313c2d0273 100644
+index 13b98439320ac1401a920c01d7cf5a4b3a23deff..c6b5a8dcea0f290d3cc1dbe813c9cc6a4539ca1a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 @@ -11,7 +11,7 @@ public final class Versioning {
@@ -39,7 +39,7 @@ index 13b98439320ac1401a920c01d7cf5a4b3a23deff..24ce7bae5b2afd3e0c8af78417767d31
          String result = "Unknown-Version";
  
 -        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/net.pl3x.purpur/purpur-api/pom.properties"); // Tuinity // Purpur
-+        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.kingtux.server/tuxserver-api/pom.properties"); // Tuinity // Purpur
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.kingtux.tuxserver/tuxserver-api/pom.properties"); // Tuinity // Purpur // TuxServer
          Properties properties = new Properties();
  
          if (stream != null) {
