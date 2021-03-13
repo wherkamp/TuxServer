@@ -5,7 +5,7 @@ Subject: [PATCH] Rebrand Stuff
 
 
 diff --git a/src/main/java/net/pl3x/purpur/PurpurConfig.java b/src/main/java/net/pl3x/purpur/PurpurConfig.java
-index 645213cacb6061f84da7a1c9d6f2fa94670346ff..ebe136435a9e504fa7838090d2fb2d2eb66d0347 100644
+index 5d75481660d5e11abe263f2a6343b87c75cca090..77b62ec60165d59ef0e4140c4f7c5c62272d8042 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurConfig.java
 @@ -182,7 +182,7 @@ public class PurpurConfig {
@@ -18,10 +18,10 @@ index 645213cacb6061f84da7a1c9d6f2fa94670346ff..ebe136435a9e504fa7838090d2fb2d2e
          serverModName = getString("settings.server-mod-name", serverModName);
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index dfe6777db04bb550ae0e761addd26b2d5abf3baf..332b89372ce9aa143a1289f735c71bbd0ea5d827 100644
+index 286e2964f672b75f18c48541ec1760eb9278bb1e..d67df2d10568806c48c8bf8023e83a13ab00ec61 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -231,7 +231,7 @@ import javax.annotation.Nullable; // Paper
+@@ -232,7 +232,7 @@ import javax.annotation.Nullable; // Paper
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {

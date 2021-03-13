@@ -29,7 +29,7 @@ Run the following commands in the root directory:
 ```
 
 #### Creating a patch
-Patches are effectively just commits in either `Arcadium-API` or `Arcadium-Server`. 
+Patches are effectively just commits in either `TuxServer-API` or `TuxServer-Server`. 
 To create one, just add a commit to either repo and run `./gradlew rebuildPatches`, and a 
 patch will be placed in the patches folder. Modifying commits will also modify its 
 corresponding patch file.
@@ -40,7 +40,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more detailed information.
 #### Compiling
 
 Use the command `./gradlew build` to build the api and server. Compiled jars
-will be placed under `Arcadium-API/build/libs` and `Arcadium-Server/build/libs`.
+will be placed under `TuxServer-API/build/libs` and `TuxServer-Server/build/libs`.
 
-To get a Arcadiumclip jar, run `./gradlew paperclip`.
-To install the `Arcadium-api` and `Arcadium` dependencies to your local maven repo, run `./gradlew publishToMavenLocal`
+To get a TuxServerclip jar, run `./gradlew paperclip`.
+To install the `TuxServer-api` and `TuxServer` dependencies to your local maven repo, run `./gradlew publishToMavenLocal`
