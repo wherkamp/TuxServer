@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wyatt Jacob Herkamp <wherkamp@kingtux.me>
+Date: Fri, 19 Mar 2021 20:30:00 -0400
+Subject: [PATCH] Fixed Bad NBT Permission
+
+
+diff --git a/src/main/java/net/minecraft/server/ItemBlock.java b/src/main/java/net/minecraft/server/ItemBlock.java
+index e4aea92040b58a5c87258ac6fd735f21709a45a3..ef4dbbc5e0afb294ab7cf5a9a8aa0ace8519a0f0 100644
+--- a/src/main/java/net/minecraft/server/ItemBlock.java
++++ b/src/main/java/net/minecraft/server/ItemBlock.java
+@@ -203,7 +203,7 @@ public class ItemBlock extends Item {
+                 TileEntity tileentity = world.getTileEntity(blockposition);
+ 
+                 if (tileentity != null) {
+-                    if (!world.isClientSide && tileentity.isFilteredNBT() && (entityhuman == null || !(entityhuman.isCreativeAndOp() || (entityhuman.abilities.canInstantlyBuild && entityhuman.getBukkitEntity().hasPermission("minecraft.nbt.place"))))) { // Spigot - add permission
++                    if (!entityhuman.getBukkitEntity().hasPermission("minecraft.nbt.place")) { // Spigot - add permission // TuxServer fix the stupidest shit I have ever seen.
+                         return false;
+                     }
+ 
