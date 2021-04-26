@@ -4,10 +4,10 @@ Date: Fri, 19 Mar 2021 20:30:00 -0400
 Subject: [PATCH] Fixed Bad NBT Permission
 
 
-diff --git a/src/main/java/net/minecraft/server/ItemBlock.java b/src/main/java/net/minecraft/server/ItemBlock.java
+diff --git a/src/main/java/net/minecraft/world/item/ItemBlock.java b/src/main/java/net/minecraft/world/item/ItemBlock.java
 index e4aea92040b58a5c87258ac6fd735f21709a45a3..ef4dbbc5e0afb294ab7cf5a9a8aa0ace8519a0f0 100644
---- a/src/main/java/net/minecraft/server/ItemBlock.java
-+++ b/src/main/java/net/minecraft/server/ItemBlock.java
+--- a/src/main/java/net/minecraft/world/item/ItemBlock.java
++++ b/src/main/java/net/minecraft/world/item/ItemBlock.java
 @@ -203,7 +203,7 @@ public class ItemBlock extends Item {
                  TileEntity tileentity = world.getTileEntity(blockposition);
  

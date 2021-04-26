@@ -1,11 +1,10 @@
-import xyz.jpenilla.toothpick.loadDependencies
-import xyz.jpenilla.toothpick.loadRepositories
-
 repositories {
-    loadRepositories(project)
+    // Airplane libs...
+    maven("https://jitpack.io") {
+        content { includeGroupByRegex("com\\.github\\..*") }
+    }
 }
 
 dependencies {
-    loadDependencies(project)
     implementation("cat.inspiracio", "rhino-js-engine", "1.7.7.1")
 }
