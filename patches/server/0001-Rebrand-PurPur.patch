@@ -26,7 +26,7 @@ index e717f880a1e5f0d0ad6208e6d3c6969a7617afd6..df841555a69cca71da8d5a35be30ad59
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {
--    private final String serverName = "Purpur"; // Paper // Tuinity // Airplane // Purpur
+-    private final String serverName = "Purpur"; // Paper // Tuinity // Purpur
 +    private final String serverName = "TuxServer"; // TuxServer
      private final String serverVersion;
      private final String bukkitVersion = Versioning.getBukkitVersion();
@@ -39,7 +39,7 @@ index 191f5331f0c7871f80f0da9cc38345ce33353577..9b456f230d3d1825b722e277c18d1856
      public static String getBukkitVersion() {
          String result = "Unknown-Version";
  
--        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/net.pl3x.purpur/purpur-api/pom.properties"); // Tuinity // Airplane // Purpur
+-        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/net.pl3x.purpur/purpur-api/pom.properties"); // Tuinity // Purpur
 +        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.kingtux.tuxserver/tuxserver-api/pom.properties"); // TuxServer
          Properties properties = new Properties();
  
