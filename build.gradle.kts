@@ -1,56 +1,67 @@
-import xyz.jpenilla.toothpick.gitCmd
-import xyz.jpenilla.toothpick.toothpick
-
 plugins {
-    `java-library`
-    `maven-publish`
-    id("xyz.jpenilla.toothpick") version "1.0.0-SNAPSHOT"
+    java
+    id("com.github.johnrengelman.shadow") version "7.0.0" apply false
+    id("io.papermc.paperweight.patcher") version "1.1.9"
 }
 
-toothpick {
-    forkName = "TuxServer"
-    groupId = "me.kingtux.tuxserver"
-    forkUrl = "https://github.com/wherkamp/TuxServer"
-    val versionTag = System.getenv("BUILD_NUMBER")
-        ?: "\"${gitCmd("rev-parse", "--short", "HEAD").output}\""
-    forkVersion = "git-$forkName-$versionTag"
-
-    minecraftVersion = "1.16.5"
-    nmsPackage = "1_16_R3"
-    nmsRevision = "R0.1-SNAPSHOT"
-
-    upstream = "Purpur"
-    upstreamBranch = "origin/ver/$minecraftVersion"
-
-    paperclipName = "tuxserverclip"
-
-    server {
-        project = project(":$forkNameLowercase-server")
-        patchesDir = rootProject.projectDir.resolve("patches/server")
+repositories {
+    mavenCentral()
+    maven("https://papermc.io/repo/repository/maven-public/") {
+        content {
+            onlyForConfigurations("paperclip")
+        }
     }
-    api {
-        project = project(":$forkNameLowercase-api")
-        patchesDir = rootProject.projectDir.resolve("patches/api")
+    maven("https://maven.quiltmc.org/repository/release/") {
+        content {
+            onlyForConfigurations("remapper")
+        }
     }
+}
+dependencies {
+    remapper("org.quiltmc:tiny-remapper:0.4.1")
+    paperclip("io.papermc:paperclip:2.0.1")
 }
 
 subprojects {
-    repositories {
-        mavenCentral()
-        maven("https://repo.aikar.co/content/groups/aikar/")
-        maven("https://nexus.velocitypowered.com/repository/velocity-artifacts-snapshots/")
-        maven("https://libraries.minecraft.net")
-        mavenLocal()
-    }
+    apply(plugin = "java")
+    apply(plugin = "maven-publish")
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-        withSourcesJar()
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(16))
+        }
     }
 
-    publishing.repositories.maven {
-        url = uri("https://repo.potatocorp.dev/storages/maven/kingtux-repo")
-        credentials(PasswordCredentials::class)
+    tasks.withType<JavaCompile>().configureEach {
+        options.encoding = "UTF-8"
+        options.release.set(16)
+    }
+
+    repositories {
+        mavenCentral()
+        maven("https://oss.sonatype.org/content/groups/public/")
+        maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://ci.emc.gs/nexus/content/groups/aikar/")
+        maven("https://repo.aikar.co/content/groups/aikar")
+        maven("https://repo.md-5.net/content/repositories/releases/")
+        maven("https://hub.spigotmc.org/nexus/content/groups/public/")
+        maven("https://nexus.velocitypowered.com/repository/velocity-artifacts-snapshots/")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    }
+}
+
+paperweight {
+    serverProject.set(project(":TuxServer-Server"))
+
+    useStandardUpstream("Purpur") {
+        url.set(github("pl3xgaming", "Purpur"))
+        ref.set(providers.gradleProperty("purpurCommit"))
+
+        withStandardPatcher {
+            baseName("Purpur")
+
+            apiOutputDir.set(layout.projectDirectory.dir("TuxServer-API"))
+            serverOutputDir.set(layout.projectDirectory.dir("TuxServer-Server"))
+        }
     }
 }
