@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wyatt Jacob Herkamp <wherkamp@kingtux.me>
+Date: Thu, 5 Aug 2021 09:58:58 -0400
+Subject: [PATCH] Fixed Bad NBT Permission
+
+
+diff --git a/src/main/java/net/minecraft/world/item/BlockItem.java b/src/main/java/net/minecraft/world/item/BlockItem.java
+index 65917d1438b0f480385e9117ba2a386e990b9a0b..9259b68f56bb94fa89a5a8d4bd7e2ded8a767499 100644
+--- a/src/main/java/net/minecraft/world/item/BlockItem.java
++++ b/src/main/java/net/minecraft/world/item/BlockItem.java
+@@ -243,7 +243,7 @@ public class BlockItem extends Item {
+                 BlockEntity tileentity = world.getBlockEntity(pos);
+ 
+                 if (tileentity != null) {
+-                    if (!world.isClientSide && tileentity.onlyOpCanSetNbt() && (player == null || !(player.canUseGameMasterBlocks() || (player.getAbilities().instabuild && player.getBukkitEntity().hasPermission("minecraft.nbt.place"))))) { // Spigot - add permission
++                    if (!player.getBukkitEntity().hasPermission("minecraft.nbt.place")) { // Spigot - add permission
+                         return false;
+                     }
+ 
